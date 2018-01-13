@@ -7,18 +7,16 @@
 //
 
 import UIKit
-
+import CoreLocation
+import SwiftyJSON
 
 class WeatherViewController: UIViewController {
     
     //Constants
     let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
-    let APP_ID = "e72ca729af228beabd5d20e3b7749713"
-    
 
     //TODO: Declare instance variables here
-    
-
+    let locationManager = CLLocationManager()
     
     //Pre-linked IBOutlets
     @IBOutlet weak var weatherIcon: UIImageView!
@@ -31,8 +29,10 @@ class WeatherViewController: UIViewController {
         
         
         //TODO:Set up the location manager here.
-    
-        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
     }
     
@@ -64,22 +64,13 @@ class WeatherViewController: UIViewController {
     
     
     //Write the updateUIWithWeatherData method here:
-    
-    
-    
-    
-    
-    
-    //MARK: - Location Manager Delegate Methods
-    /***************************************************************/
-    
-    
-    //Write the didUpdateLocations method here:
-    
-    
-    
-    //Write the didFailWithError method here:
-    
+    func updateUIWithWeatherData(data: JSON, error: Error?) {
+        if let error = error {
+            fatalError("Error: \(error).")
+        }
+        
+        print(data)
+    }
     
     
 
@@ -93,11 +84,52 @@ class WeatherViewController: UIViewController {
 
     
     //Write the PrepareForSegue Method here
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        return
+    }
     
     
     
     
+}
+
+extension WeatherViewController: CLLocationManagerDelegate {
+    //MARK: - Location Manager Delegate Methods
+    /***************************************************************/
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else {
+            notifyUserOfLocationError(locationError: nil)
+            return
+        }
+        
+        if location.horizontalAccuracy > 0 {
+            locationManager.stopUpdatingLocation()
+            
+            let latitude =  String(location.coordinate.latitude)
+            let longitude = String(location.coordinate.longitude)
+            
+            let params: [String:String] =  [
+                "lat": latitude,
+                "lon": longitude,
+                "appid": WEATHER_APP_ID
+            ]
+            
+            WeatherManager.fetchWeatherData(withURL: WEATHER_URL, AppID: WEATHER_APP_ID, andParams: params, callback: updateUIWithWeatherData(data:error:))
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        notifyUserOfLocationError(locationError: error)
+    }
+    
+    func notifyUserOfLocationError(locationError: Error?) {
+        cityLabel.text = "Location Unavailable"
+        
+        if let error = locationError {
+            print("Failed with error: \(error)")
+        }
+    }
 }
 
 
