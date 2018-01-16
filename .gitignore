@@ -2,8 +2,10 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-# Custom Files
-Constants.swift
+## Custom Files
+
+## Uncomment next line to hide secrets from Git
+# Constants.swift
 
 ## Build generated
 build/
