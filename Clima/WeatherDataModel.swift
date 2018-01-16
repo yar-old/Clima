@@ -1,9 +1,6 @@
 //
 //  WeatherDataModel.swift
-//  WeatherApp
-//
-//  Created by Angela Yu on 24/08/2015.
-//  Copyright (c) 2015 London App Brewery. All rights reserved.
+//  Clima
 //
 
 import UIKit
@@ -15,17 +12,17 @@ class WeatherDataModel {
     var condition: Int = 0
     var city: String = ""
     var weatherIconName: String = ""
-    
+
     func tempF() -> Int {
          return Int((temperature * (9/5) - 459.67).rounded())
     }
-    
+
     func tempC() -> Int {
         return Int((temperature - 273.15).rounded())
     }
-    
+
     func updateWeatherIcon(condition: Int) -> String {
-        
+
         switch (condition) {
             case 0...300 :
                 return "tstorm1"
