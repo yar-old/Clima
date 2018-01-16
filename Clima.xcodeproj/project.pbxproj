@@ -15,6 +15,7 @@
 		63E28AF91B99C36100FBF6E0 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E28AF51B99C36100FBF6E0 /* WeatherViewController.swift */; };
 		63E28AFF1B99C3B300FBF6E0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E28AFE1B99C3B300FBF6E0 /* LaunchScreen.xib */; };
 		B0981361200A9A27009C6371 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0981360200A9A27009C6371 /* WeatherManager.swift */; };
+		B0981363200B04B5009C6371 /* WeatherViewController+CLLocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0981362200B04B5009C6371 /* WeatherViewController+CLLocationManagerDelegate.swift */; };
 		C063A21B0C9B2B8322F136BC /* Pods_Clima.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 225FC19E60E98F61E48BAC7E /* Pods_Clima.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		63E28AFE1B99C3B300FBF6E0 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		97B423877E9B4C07889F83DC /* Pods-Clima.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clima.release.xcconfig"; path = "Pods/Target Support Files/Pods-Clima/Pods-Clima.release.xcconfig"; sourceTree = "<group>"; };
 		B0981360200A9A27009C6371 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		B0981362200B04B5009C6371 /* WeatherViewController+CLLocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherViewController+CLLocationManagerDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,9 +106,10 @@
 		63E28AFB1B99C37500FBF6E0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				63E28AD01B99C32400FBF6E0 /* AppDelegate.swift */,
 				63E28AF21B99C36100FBF6E0 /* ChangeCityViewController.swift */,
 				63E28AF51B99C36100FBF6E0 /* WeatherViewController.swift */,
-				63E28AD01B99C32400FBF6E0 /* AppDelegate.swift */,
+				B0981362200B04B5009C6371 /* WeatherViewController+CLLocationManagerDelegate.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				B0981361200A9A27009C6371 /* WeatherManager.swift in Sources */,
 				63E28AF11B99C35700FBF6E0 /* WeatherDataModel.swift in Sources */,
 				63E28AF91B99C36100FBF6E0 /* WeatherViewController.swift in Sources */,
+				B0981363200B04B5009C6371 /* WeatherViewController+CLLocationManagerDelegate.swift in Sources */,
 				63E28AD11B99C32400FBF6E0 /* AppDelegate.swift in Sources */,
 				63E28AF61B99C36100FBF6E0 /* ChangeCityViewController.swift in Sources */,
 			);
